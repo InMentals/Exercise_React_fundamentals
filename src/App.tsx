@@ -1,5 +1,7 @@
+import AdvertsPage from "./pages/adverts-page";
+
 function App() {
-  return <h1>WallaReact</h1>;
+  return <AdvertsPage />;
 }
 
 export default App;
