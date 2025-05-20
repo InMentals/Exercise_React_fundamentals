@@ -1,25 +1,18 @@
-const adverts = [
-  {
-    name: "Volkswagen Golf",
-    sale: true,
-    price: 20000,
-    tags: ["motor"],
-    userId: 1,
-    updatedAt: "2021-03-15T18:23:57.579Z",
-    id: 1,
-  },
-  {
-    name: "Iphone 14",
-    sale: false,
-    price: 1000,
-    tags: ["mobile", "lifestyle"],
-    userId: 1,
-    updatedAt: "2021-03-15T18:24:56.773Z",
-    id: 2,
-  },
-];
+import { getLatestAdverts } from "./service";
+import { useEffect, useState } from "react";
+import type { Advert } from "./types";
 
 function AdvertsPage() {
+  const [adverts, setAdverts] = useState<Advert[]>([]);
+
+  useEffect(() => {
+    async function getAdverts() {
+      const adverts = await getLatestAdverts();
+      setAdverts(adverts);
+    }
+    getAdverts();
+  }, []);
+
   return (
     <div>
       <h1>Adverts Page</h1>
