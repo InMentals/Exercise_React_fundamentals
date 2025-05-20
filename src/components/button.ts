@@ -32,5 +32,6 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
         : "rgba(29, 161, 242, 0.1)"};
   }
 `;
+Button.displayName = "Button";
 
 export default Button;
