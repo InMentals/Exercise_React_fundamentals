@@ -1,14 +1,9 @@
 import { getLatestAdverts } from "./service";
 import { useEffect, useState } from "react";
 import type { Advert } from "./types";
-import Button from "../../components/button";
-import { logout } from "../auth/service";
+import Layout from "../../components/layout/layout";
 
-interface AdvertsPageProps {
-  onLogout: () => void;
-}
-
-function AdvertsPage({ onLogout }: AdvertsPageProps) {
+function AdvertsPage() {
   const [adverts, setAdverts] = useState<Advert[]>([]);
 
   useEffect(() => {
@@ -19,38 +14,32 @@ function AdvertsPage({ onLogout }: AdvertsPageProps) {
     getAdverts();
   }, []);
 
-  const handleLogoutClick = async () => {
-    await logout();
-    onLogout();
-  };
-
   return (
-    <div>
-      <h1>Adverts Page</h1>
-      <ul>
-        {adverts.map((advert) => (
-          <li key={advert.id}>
-            <h2>{advert.name}</h2>
-            <strong>{advert.sale ? "Sale" : "Buy"}</strong>
-            <data value={advert.price}>
-              {new Intl.NumberFormat("es-ES", {
-                style: "currency",
-                currency: "EUR",
-              }).format(advert.price)}
-            </data>
-            <img src="foto.jpg" alt={advert.name} />
-            <ul aria-label="Tags">
-              {advert.tags.map((tag) => (
-                <li>{tag}</li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
-      <Button disabled={false} $variant="secondary" onClick={handleLogoutClick}>
-        Logout
-      </Button>
-    </div>
+    <Layout title="Adverts:">
+      <div>
+        <h1>Adverts Page</h1>
+        <ul>
+          {adverts.map((advert) => (
+            <li key={advert.id}>
+              <h2>{advert.name}</h2>
+              <strong>{advert.sale ? "Sale" : "Buy"}</strong>
+              <data value={advert.price}>
+                {new Intl.NumberFormat("es-ES", {
+                  style: "currency",
+                  currency: "EUR",
+                }).format(advert.price)}
+              </data>
+              <img src="foto.jpg" alt={advert.name} />
+              <ul aria-label="Tags">
+                {advert.tags.map((tag) => (
+                  <li>{tag}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Layout>
   );
 }
 
