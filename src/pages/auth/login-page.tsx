@@ -1,10 +1,10 @@
-import { useState, type FormEvent, type ChangeEvent, useContext } from "react";
+import { useState, type FormEvent, type ChangeEvent } from "react";
 import Button from "../../components/button";
 import { login } from "./service";
-import { AuthContext } from "./context";
+import { useAuth } from "./context";
 
 function LoginPage() {
-  const { onLogin } = useContext(AuthContext);
+  const { onLogin } = useAuth();
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
