@@ -1,7 +1,8 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
-import Button from "../../components/button";
+import Button from "../../components/ui/button";
 import { login } from "./service";
 import { useAuth } from "./context";
+import FormField from "../../components/ui/form-field";
 
 function LoginPage() {
   const { onLogin } = useAuth();
@@ -10,7 +11,7 @@ function LoginPage() {
     password: "",
   });
   const { email, password } = credentials;
-  const disabled = !email || !password;
+  const isDisabled = !email || !password;
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setCredentials((prevCredentials) => ({
@@ -34,25 +35,21 @@ function LoginPage() {
     <div>
       <h1>Log in to WallaReact</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-        <Button type="submit" $variant="primary" disabled={disabled}>
+        <FormField
+          type="text"
+          name="email"
+          label="Email"
+          value={email}
+          onChange={handleChange}
+        />
+        <FormField
+          type="password"
+          name="password"
+          label="Password"
+          value={password}
+          onChange={handleChange}
+        />
+        <Button type="submit" $variant="primary" disabled={isDisabled}>
           Log in
         </Button>
       </form>

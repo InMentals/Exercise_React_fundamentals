@@ -1,14 +1,14 @@
-import AdvertsPage from "./pages/adverts/adverts-page";
 import LoginPage from "./pages/auth/login-page";
+import TweetsPage from "./pages/tweets/tweets-page";
 import { useAuth } from "./pages/auth/context";
-import NewAdvertPage from "./pages/adverts/new-advert-page";
+import NewTweetPage from "./pages/tweets/new-tweet-page";
 
 function App() {
   const { isLogged } = useAuth();
   return isLogged ? (
     <>
-      <AdvertsPage />
-      <NewAdvertPage />
+      <TweetsPage />
+      <NewTweetPage />
     </>
   ) : (
     <LoginPage />

@@ -2,6 +2,15 @@ import { getLatestAdverts } from "./service";
 import { useEffect, useState } from "react";
 import type { Advert } from "./types";
 import Layout from "../../components/layout/layout";
+import AdvertItem from "./advert-item";
+import Button from "../../components/ui/button";
+
+const EmptyList = () => (
+  <div>
+    <p>There are no adverts published</p>
+    <Button $variant="primary">Create tweet</Button>
+  </div>
+);
 
 function AdvertsPage() {
   const [adverts, setAdverts] = useState<Advert[]>([]);
@@ -18,26 +27,17 @@ function AdvertsPage() {
     <Layout title="Adverts:">
       <div>
         <h1>Adverts Page</h1>
-        <ul>
-          {adverts.map((advert) => (
-            <li key={advert.id}>
-              <h2>{advert.name}</h2>
-              <strong>{advert.sale ? "Sale" : "Buy"}</strong>
-              <data value={advert.price}>
-                {new Intl.NumberFormat("es-ES", {
-                  style: "currency",
-                  currency: "EUR",
-                }).format(advert.price)}
-              </data>
-              <img src="foto.jpg" alt={advert.name} />
-              <ul aria-label="Tags">
-                {advert.tags.map((tag) => (
-                  <li>{tag}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        {adverts.length ? (
+          <ul>
+            {adverts.map((advert) => (
+              <li key={advert.id}>
+                <AdvertItem advert={advert} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyList />
+        )}
       </div>
     </Layout>
   );
