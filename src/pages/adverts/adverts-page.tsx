@@ -1,9 +1,9 @@
 import { getLatestAdverts } from "./service";
 import { useEffect, useState } from "react";
 import type { Advert } from "./types";
-import Layout from "../../components/layout/layout";
 import AdvertItem from "./advert-item";
 import Button from "../../components/ui/button";
+import Page from "../../components/layout/page";
 
 const EmptyList = () => (
   <div>
@@ -24,7 +24,7 @@ function AdvertsPage() {
   }, []);
 
   return (
-    <Layout title="Adverts:">
+    <Page title="Adverts:">
       <div>
         <h1>Adverts Page</h1>
         {adverts.length ? (
@@ -39,7 +39,7 @@ function AdvertsPage() {
           <EmptyList />
         )}
       </div>
-    </Layout>
+    </Page>
   );
 }
 

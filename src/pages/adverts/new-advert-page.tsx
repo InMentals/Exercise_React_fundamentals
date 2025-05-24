@@ -1,10 +1,10 @@
-import Layout from "../../components/layout/layout";
+import Page from "../../components/layout/page";
 import Button from "../../components/ui/button";
 import FormField from "../../components/ui/form-field";
 
 function NewAdvertPage() {
   return (
-    <Layout title="">
+    <Page title="">
       <div>
         <form>
           <FormField type="text" name="name" label="Title" value="" />
@@ -17,7 +17,7 @@ function NewAdvertPage() {
           </div>
         </form>
       </div>
-    </Layout>
+    </Page>
   );
 }
 
