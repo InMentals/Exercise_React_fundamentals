@@ -1,6 +1,7 @@
 import Button from "../../components/ui/button";
 import { useAuth } from "./context";
 import { logout } from "./service";
+import { Link } from "react-router";
 
 function AuthButton() {
   const { isLogged, onLogout } = useAuth();
@@ -10,11 +11,18 @@ function AuthButton() {
   };
 
   return isLogged ? (
-    <Button $variant="secondary" onClick={handleLogoutClick}>
+    <Button
+      $variant="secondary"
+      onClick={handleLogoutClick}
+      as={Link}
+      to="/login"
+    >
       Logout
     </Button>
   ) : (
-    <Button $variant="primary">Login</Button>
+    <Button $variant="primary" as={Link} to="/login">
+      Login
+    </Button>
   );
 }
 

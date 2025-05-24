@@ -4,6 +4,7 @@ import type { Advert } from "./types";
 import AdvertItem from "./advert-item";
 import Button from "../../components/ui/button";
 import Page from "../../components/layout/page";
+import { Link } from "react-router";
 
 const EmptyList = () => (
   <div>
@@ -31,7 +32,9 @@ function AdvertsPage() {
           <ul>
             {adverts.map((advert) => (
               <li key={advert.id}>
-                <AdvertItem advert={advert} />
+                <Link to={`/adverts/${advert.id}`}>
+                  <AdvertItem advert={advert} />
+                </Link>
               </li>
             ))}
           </ul>
