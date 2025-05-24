@@ -3,8 +3,11 @@ import Button from "../../components/ui/button";
 import { login } from "./service";
 import { useAuth } from "./context";
 import FormField from "../../components/ui/form-field";
+import { useNavigate, useLocation } from "react-router";
 
 function LoginPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { onLogin } = useAuth();
   const [credentials, setCredentials] = useState({
     email: "",
@@ -26,6 +29,8 @@ function LoginPage() {
     try {
       await login(credentials);
       onLogin();
+      const to = location.state?.from ?? "/";
+      navigate(to, { replace: true });
     } catch (error) {
       console.error(error);
     }
