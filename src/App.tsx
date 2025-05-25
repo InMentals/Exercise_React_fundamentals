@@ -4,6 +4,7 @@ import NewAdvertPage from "./pages/adverts/new-advert-page";
 import { Navigate, Route, Routes } from "react-router";
 import Layout from "./components/layout/layout";
 import RequireAuth from "./pages/auth/require-auth";
+import AdvertPage from "./pages/adverts/advert-page";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         }
       >
         <Route index element={<AdvertsPage />} />
+        <Route path=":advertId" element={<AdvertPage />} />
         <Route path="new" element={<NewAdvertPage />} />
       </Route>
       <Route path="/" element={<Navigate to="/adverts" />} />
