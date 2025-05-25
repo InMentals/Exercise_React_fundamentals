@@ -4,6 +4,7 @@ import { login } from "./service";
 import { useAuth } from "./context";
 import FormField from "../../components/ui/form-field";
 import { useNavigate, useLocation } from "react-router";
+import { AxiosError } from "axios";
 
 function LoginPage() {
   const location = useLocation();
@@ -13,8 +14,10 @@ function LoginPage() {
     email: "",
     password: "",
   });
+  const [error, setError] = useState<{ message: string } | null>(null);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
   const { email, password } = credentials;
-  const isDisabled = !email || !password;
+  const isDisabled = !email || !password || isFetching;
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setCredentials((prevCredentials) => ({
@@ -27,12 +30,22 @@ function LoginPage() {
     event.preventDefault();
 
     try {
+      setIsFetching(true);
       await login(credentials);
       onLogin();
       const to = location.state?.from ?? "/";
       navigate(to, { replace: true });
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      if (error instanceof AxiosError) {
+        setError({
+          message: error.response?.data?.message ?? error.message ?? "",
+        });
+        //TODO: is this the correct way to handle both errors?
+        //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
+      }
+    } finally {
+      setIsFetching(false);
     }
   }
 
@@ -58,6 +71,16 @@ function LoginPage() {
           Log in
         </Button>
       </form>
+      {error && (
+        <div
+          role="alert"
+          onClick={() => {
+            setError(null);
+          }}
+        >
+          {error.message}
+        </div>
+      )}
     </div>
   );
 }
