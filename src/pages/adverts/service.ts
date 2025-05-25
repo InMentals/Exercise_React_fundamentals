@@ -7,3 +7,9 @@ export const getLatestAdverts = async () => {
   const response = await client.get<Advert[]>(ADVERTS_URL);
   return response.data;
 };
+
+export const getAdvert = async (advertId: string) => {
+  const url = `${ADVERTS_URL}/${advertId}`;
+  const response = await client.get<Advert>(url);
+  return response.data;
+};

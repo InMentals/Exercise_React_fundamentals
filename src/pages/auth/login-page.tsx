@@ -41,7 +41,6 @@ function LoginPage() {
         setError({
           message: error.response?.data?.message ?? error.message ?? "",
         });
-        //TODO: is this the correct way to handle both errors?
         //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
       }
     } finally {

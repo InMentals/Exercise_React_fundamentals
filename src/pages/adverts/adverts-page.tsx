@@ -6,6 +6,9 @@ import Button from "../../components/ui/button";
 import Page from "../../components/layout/page";
 import { Link } from "react-router";
 
+//TODO: handle connection error?
+//TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
+
 const EmptyList = () => (
   <div>
     <p>There are no adverts published</p>
