@@ -1,5 +1,5 @@
 import { client } from "../../api/client";
-import type { Advert } from "./types";
+import type { Advert, PreAdvert } from "./types";
 
 const ADVERTS_URL = "/api/v1/adverts";
 
@@ -11,5 +11,16 @@ export const getLatestAdverts = async () => {
 export const getAdvert = async (advertId: string) => {
   const url = `${ADVERTS_URL}/${advertId}`;
   const response = await client.get<Advert>(url);
+  return response.data;
+};
+
+export const createAdvert = async (advert: PreAdvert) => {
+  const response = await client.post<Advert>(ADVERTS_URL, {
+    name: advert.name,
+    sale: advert.sale,
+    price: advert.price,
+    tags: advert.tags,
+  });
+  console.log(response.data);
   return response.data;
 };

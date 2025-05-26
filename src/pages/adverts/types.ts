@@ -7,3 +7,10 @@ export interface Advert {
   updatedAt: string;
   id: string;
 }
+
+export interface PreAdvert {
+  name: string;
+  sale: boolean;
+  price: number;
+  tags: string[];
+}
