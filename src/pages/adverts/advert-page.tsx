@@ -32,3 +32,6 @@ function AdvertPage() {
 }
 
 export default AdvertPage;
+
+//TODO: show all the details
+//TODO: build delete button

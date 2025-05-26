@@ -1,0 +1,35 @@
+import type { ComponentProps } from "react";
+
+interface CheckBoxSelectionProps extends ComponentProps<"input"> {
+  options: string[];
+  name: string;
+  selectedValue: string[];
+}
+
+const CheckBoxSelection = ({
+  options,
+  name,
+  selectedValue,
+  ...props
+}: CheckBoxSelectionProps) => {
+  return (
+    <fieldset>
+      <legend>{`${name.charAt(0).toUpperCase() + name.slice(1)}:`}</legend>
+      {options.map((option) => (
+        <div key={option}>
+          <input
+            type="checkbox"
+            id={option}
+            name={option}
+            value={option}
+            checked={selectedValue.includes(option)}
+            {...props}
+          />
+          <label htmlFor={option}>{option}</label>
+        </div>
+      ))}
+    </fieldset>
+  );
+};
+
+export default CheckBoxSelection;

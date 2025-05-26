@@ -6,9 +6,17 @@ import { createAdvert } from "./service";
 import { useNavigate } from "react-router";
 import { AxiosError } from "axios";
 import type { PreAdvert } from "./types";
+import RadioSelection from "../../components/ui/radio-selection";
+import CheckBoxSelection from "../../components/ui/checkbox-selection";
 
 function NewAdvertPage() {
-  const [advertInfo, setAdvertInfo] = useState({ name: "", price: "" });
+  const [advertInfo, setAdvertInfo] = useState({
+    name: "",
+    price: "",
+    sale: "sell",
+  });
+  const [tags, setTags] = useState<string[]>([]);
+
   const { name, price } = advertInfo;
 
   const navigate = useNavigate();
@@ -20,13 +28,21 @@ function NewAdvertPage() {
     }));
   }
 
+  function handleTagsChange(event: ChangeEvent<HTMLInputElement>) {
+    if (tags.includes(event.target.value)) {
+      setTags(tags.filter((tag) => tag != event.target.value));
+    } else {
+      setTags([...tags, event.target.value]);
+    }
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault;
+    event.preventDefault();
     const preAdvert: PreAdvert = {
       name: advertInfo.name,
-      sale: true,
+      sale: advertInfo.sale === "sell",
       price: +advertInfo.price,
-      tags: ["work"],
+      tags: tags,
     };
 
     try {
@@ -60,6 +76,18 @@ function NewAdvertPage() {
             value={price}
             onChange={handleChange}
           />
+          <RadioSelection
+            options={["sell", "buy"]}
+            name={"sale"}
+            selectedValue={advertInfo.sale}
+            onChange={handleChange}
+          />
+          <CheckBoxSelection
+            options={["lifestyle", "mobile", "motor", "work"]}
+            name="tags"
+            selectedValue={tags}
+            onChange={handleTagsChange}
+          />
           <div>
             <span></span>
             <Button type="submit" $variant="primary">
@@ -75,3 +103,5 @@ function NewAdvertPage() {
 export default NewAdvertPage;
 
 //TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00)
+
+//TODO: Save picture
