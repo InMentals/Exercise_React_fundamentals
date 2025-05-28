@@ -14,6 +14,7 @@ function LoginPage() {
     email: "",
     password: "",
   });
+  const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState<{ message: string } | null>(null);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const { email, password } = credentials;
@@ -26,12 +27,17 @@ function LoginPage() {
     }));
   }
 
+  function handleRememberMe(event: ChangeEvent<HTMLInputElement>) {
+    setRememberMe(event.target.checked);
+    console.log(rememberMe);
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     try {
       setIsFetching(true);
-      await login(credentials);
+      await login(credentials, rememberMe);
       onLogin();
       const to = location.state?.from ?? "/";
       navigate(to, { replace: true });
@@ -66,6 +72,22 @@ function LoginPage() {
           value={password}
           onChange={handleChange}
         />
+        <div>
+          <input
+            type="checkbox"
+            id="rememberMe"
+            name="rememberMe"
+            checked={rememberMe}
+            onChange={handleRememberMe}
+          />
+          <label htmlFor="rememberMe">Remember me</label>
+          {/* <CheckBoxSelection
+            options={["rememberMe"]}
+            selectedValue={["rememberMe"]}
+            name="rememberMe"
+            onChange={handleRememberMe}
+          /> */}
+        </div>
         <Button type="submit" $variant="primary" disabled={isDisabled}>
           Log in
         </Button>
