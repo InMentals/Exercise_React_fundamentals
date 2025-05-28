@@ -15,12 +15,13 @@ export const getAdvert = async (advertId: string) => {
 };
 
 export const createAdvert = async (advert: PreAdvert) => {
-  const response = await client.post<Advert>(ADVERTS_URL, {
-    name: advert.name,
-    sale: advert.sale,
-    price: advert.price,
-    tags: advert.tags,
-  });
+  const formData = new FormData();
+  formData.append("name", advert.name);
+  formData.append("sale", advert.sale);
+  formData.append("price", advert.price);
+  formData.append("tags", advert.tags);
+
+  const response = await client.post<Advert>(ADVERTS_URL, formData);
   console.log(response.data);
   return response.data;
 };

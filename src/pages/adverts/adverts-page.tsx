@@ -8,11 +8,11 @@ import { Link } from "react-router";
 
 //TODO: handle connection error?
 //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
-
+//TODO: handleOnClick to navigate to new advert page
 const EmptyList = () => (
   <div>
     <p>There are no adverts published</p>
-    <Button $variant="primary">Create tweet</Button>
+    <Button $variant="primary">Publish new advert</Button>
   </div>
 );
 

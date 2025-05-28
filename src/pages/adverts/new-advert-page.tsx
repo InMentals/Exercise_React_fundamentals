@@ -40,9 +40,9 @@ function NewAdvertPage() {
     event.preventDefault();
     const preAdvert: PreAdvert = {
       name: advertInfo.name,
-      sale: advertInfo.sale === "sell",
-      price: +advertInfo.price,
-      tags: tags,
+      sale: (advertInfo.sale === "sell").toString(),
+      price: advertInfo.price,
+      tags: tags.toString(),
     };
 
     try {
@@ -82,6 +82,7 @@ function NewAdvertPage() {
             selectedValue={advertInfo.sale}
             onChange={handleChange}
           />
+          <input type="file"></input>
           <CheckBoxSelection
             options={["lifestyle", "mobile", "motor", "work"]}
             name="tags"
@@ -105,3 +106,5 @@ export default NewAdvertPage;
 //TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00)
 
 //TODO: Save picture
+
+//TODO: Load tags from the api

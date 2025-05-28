@@ -10,7 +10,7 @@ export interface Advert {
 
 export interface PreAdvert {
   name: string;
-  sale: boolean;
-  price: number;
-  tags: string[];
+  sale: string;
+  price: string;
+  tags: string;
 }
