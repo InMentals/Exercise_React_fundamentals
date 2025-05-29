@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Page from "../../components/layout/page";
 import { useParams, useNavigate } from "react-router";
 import type { Advert } from "./types";
-import { getAdvert } from "./service";
+import { deleteAdvert, getAdvert } from "./service";
 import { AxiosError } from "axios";
+import Button from "../../components/ui/button";
 //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
 
 function AdvertPage() {
@@ -24,10 +25,21 @@ function AdvertPage() {
         }
       });
   }, [params.advertId]);
+
+  async function handleDelete() {
+    if (params.advertId) {
+      await deleteAdvert(params.advertId);
+      navigate("/", { replace: true });
+    }
+  }
+
   return (
     <Page title="Advert detail">
       Advert detail {params.advertId} - {advert?.name}
       <img src={advert?.photo} alt={advert?.name} />
+      <Button $variant="primary" onClick={handleDelete}>
+        Delete advert{" "}
+      </Button>
     </Page>
   );
 }
@@ -35,4 +47,4 @@ function AdvertPage() {
 export default AdvertPage;
 
 //TODO: show all the details
-//TODO: build delete button
+//TODO: build delete confirmation
