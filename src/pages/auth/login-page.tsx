@@ -29,7 +29,6 @@ function LoginPage() {
 
   function handleRememberMe(event: ChangeEvent<HTMLInputElement>) {
     setRememberMe(event.target.checked);
-    console.log(rememberMe);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -81,12 +80,6 @@ function LoginPage() {
             onChange={handleRememberMe}
           />
           <label htmlFor="rememberMe">Remember me</label>
-          {/* <CheckBoxSelection
-            options={["rememberMe"]}
-            selectedValue={["rememberMe"]}
-            name="rememberMe"
-            onChange={handleRememberMe}
-          /> */}
         </div>
         <Button type="submit" $variant="primary" disabled={isDisabled}>
           Log in
