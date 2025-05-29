@@ -6,6 +6,7 @@ export interface Advert {
   userId: string;
   updatedAt: string;
   id: string;
+  photo: string;
 }
 
 export interface PreAdvert {
@@ -13,4 +14,5 @@ export interface PreAdvert {
   sale: string;
   price: string;
   tags: string;
+  photo: File;
 }

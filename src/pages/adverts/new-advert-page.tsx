@@ -14,6 +14,7 @@ function NewAdvertPage() {
     name: "",
     price: "",
     sale: "sell",
+    photo: [],
   });
   const [tags, setTags] = useState<string[]>([]);
 
@@ -22,10 +23,17 @@ function NewAdvertPage() {
   const navigate = useNavigate();
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setAdvertInfo((prevAdvertInfo) => ({
-      ...prevAdvertInfo,
-      [event.target.name]: event.target.value,
-    }));
+    if (event.target.type === "file") {
+      setAdvertInfo((prevAdvertInfo) => ({
+        ...prevAdvertInfo,
+        [event.target.name]: event.target.files,
+      }));
+    } else {
+      setAdvertInfo((prevAdvertInfo) => ({
+        ...prevAdvertInfo,
+        [event.target.name]: event.target.value,
+      }));
+    }
   }
 
   function handleTagsChange(event: ChangeEvent<HTMLInputElement>) {
@@ -43,6 +51,7 @@ function NewAdvertPage() {
       sale: (advertInfo.sale === "sell").toString(),
       price: advertInfo.price,
       tags: tags.toString(),
+      photo: advertInfo.photo[0],
     };
 
     try {
@@ -82,7 +91,12 @@ function NewAdvertPage() {
             selectedValue={advertInfo.sale}
             onChange={handleChange}
           />
-          <input type="file"></input>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleChange}
+            name="photo"
+          />
           <CheckBoxSelection
             options={["lifestyle", "mobile", "motor", "work"]}
             name="tags"
@@ -104,7 +118,6 @@ function NewAdvertPage() {
 export default NewAdvertPage;
 
 //TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00)
-
-//TODO: Save picture
+//TODO: handle erquired fields (all but picture)
 
 //TODO: Load tags from the api

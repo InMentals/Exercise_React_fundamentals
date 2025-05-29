@@ -27,6 +27,7 @@ function AdvertPage() {
   return (
     <Page title="Advert detail">
       Advert detail {params.advertId} - {advert?.name}
+      <img src={advert?.photo} alt={advert?.name} />
     </Page>
   );
 }
