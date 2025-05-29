@@ -1,8 +1,8 @@
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import Page from "../../components/layout/page";
 import Button from "../../components/ui/button";
 import FormField from "../../components/ui/form-field";
-import { createAdvert } from "./service";
+import { createAdvert, getTags } from "./service";
 import { useNavigate } from "react-router";
 import { AxiosError } from "axios";
 import type { PreAdvert } from "./types";
@@ -17,6 +17,15 @@ function NewAdvertPage() {
     photo: [],
   });
   const [tags, setTags] = useState<string[]>([]);
+  const [availableTags, setAvailableTags] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function loadTags() {
+      const getAvailableTags = await getTags();
+      setAvailableTags(getAvailableTags);
+    }
+    loadTags();
+  }, []);
 
   const { name, price } = advertInfo;
 
@@ -98,7 +107,7 @@ function NewAdvertPage() {
             name="photo"
           />
           <CheckBoxSelection
-            options={["lifestyle", "mobile", "motor", "work"]}
+            options={availableTags}
             name="tags"
             selectedValue={tags}
             onChange={handleTagsChange}
@@ -119,5 +128,3 @@ export default NewAdvertPage;
 
 //TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00)
 //TODO: handle erquired fields (all but picture)
-
-//TODO: Load tags from the api
