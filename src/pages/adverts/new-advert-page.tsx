@@ -126,5 +126,5 @@ function NewAdvertPage() {
 
 export default NewAdvertPage;
 
-//TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00)
+//TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00) and once is clicked (to assure if bad conexion)
 //TODO: handle erquired fields (all but picture)

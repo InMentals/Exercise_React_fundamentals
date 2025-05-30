@@ -64,7 +64,7 @@ function AdvertPage() {
         }}
       >
         <Dialog
-          text="Are You sure?"
+          text="Are you sure?"
           onSubmit={handleDelete}
           onCancel={handleCancel}
         />

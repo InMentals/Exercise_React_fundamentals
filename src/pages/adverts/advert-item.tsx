@@ -9,7 +9,7 @@ const AdvertItem = ({ advert }: AdvertItemProps) => {
   return (
     <article>
       <h2>{name}</h2>
-      <strong>{sale ? "Sale" : "Buy"}</strong>
+      <strong>{sale ? "Sell" : "Buy"}</strong>
       <data value={price}>
         {new Intl.NumberFormat("es-ES", {
           style: "currency",
