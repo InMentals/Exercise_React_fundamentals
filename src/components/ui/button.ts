@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const accentColor = "rgb(29, 161, 242)";
+const accentColor = "var(--main-brand-color)";
 
 const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   cursor: pointer;
@@ -21,15 +21,15 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   outline-style: none;
   padding: 0 30px;
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
 
   &:hover {
     background-color: ${(props) =>
       props.$variant === "primary"
-        ? "rgb(26, 145, 218)"
-        : "rgba(29, 161, 242, 0.1)"};
+        ? "var(--main-brand-color)"
+        : "var(--main-brand-color-light)"};
   }
 `;
 Button.displayName = "Button";

@@ -1,16 +1,16 @@
-import WallareactLogo from "../icons/wallareact-logo";
+import "./header.css";
+import logo from "../../assets/logo-wallareact.svg";
 import AuthButton from "../../pages/auth/auth-button";
 import { Link } from "react-router";
 
 function Header() {
   return (
-    <header>
-      <Link to="/">
-        <div>
-          <WallareactLogo />
-        </div>
+    <header className="header">
+      <Link className="logo" to="/">
+        <img src={logo} alt="" className="logoImg" />
+        <h1>WallaReact</h1>
       </Link>
-      <nav>
+      <nav className="nav">
         <Link to="/adverts/new">Publish new advert</Link>
         <AuthButton />
       </nav>

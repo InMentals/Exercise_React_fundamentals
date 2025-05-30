@@ -1,0 +1,37 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 4px solid var(--main-brand-color-light);
+  z-index: 100;
+}
+
+.logo {
+  color: var(--main-brand-color);
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  font-family: SourGummy;
+  height: 60px;
+  margin: 0;
+}
+
+.logoImg {
+  width: 80px;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

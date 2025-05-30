@@ -1,0 +1,21 @@
+:root {
+  --bg-color: #f8f9fa;
+  --product-bg-color: white;
+  --main-brand-color: #ddce2e;
+  --main-brand-color-light: #ddce2e7a;
+  --border-color: #ddd;
+  --shadows-color: rgba(0, 0, 0, 0.05);
+  --product-text-color: #555;
+  --buy-color: #3540dc;
+  --sell-color: #28a745;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+@font-face {
+  font-family: SourGummy;
+  src: url(./src/utils/fonts/SourGummy-VariableFont_wdth,wght.ttf);
+}
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+}
