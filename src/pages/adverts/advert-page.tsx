@@ -13,6 +13,7 @@ function AdvertPage() {
   const [advert, setAdvert] = useState<Advert | null>(null);
   const [displayDialog, setDisplayDialog] = useState<string>("none");
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!params.advertId) {
       return;
@@ -26,7 +27,7 @@ function AdvertPage() {
           }
         }
       });
-  }, [params.advertId]);
+  }, [navigate, params.advertId]);
 
   function showDialog() {
     setDisplayDialog("flex");

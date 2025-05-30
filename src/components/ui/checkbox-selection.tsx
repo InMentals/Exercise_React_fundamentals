@@ -14,7 +14,7 @@ const CheckBoxSelection = ({
 }: CheckBoxSelectionProps) => {
   return (
     <fieldset>
-      <legend>{`${name.charAt(0).toUpperCase() + name.slice(1)}:`}</legend>
+      <legend>{`${name.charAt(0).toUpperCase() + name.slice(1)}*`}</legend>
       {options.map((option) => (
         <div key={option}>
           <input
@@ -25,7 +25,9 @@ const CheckBoxSelection = ({
             checked={selectedValue.includes(option)}
             {...props}
           />
-          <label htmlFor={option}>{option}</label>
+          <label
+            htmlFor={option}
+          >{`${option.charAt(0).toUpperCase() + option.slice(1)}`}</label>
         </div>
       ))}
     </fieldset>

@@ -18,6 +18,7 @@ function NewAdvertPage() {
   });
   const [tags, setTags] = useState<string[]>([]);
   const [availableTags, setAvailableTags] = useState<string[]>([]);
+  const [submited, setSubmited] = useState(false);
 
   useEffect(() => {
     async function loadTags() {
@@ -28,6 +29,7 @@ function NewAdvertPage() {
   }, []);
 
   const { name, price } = advertInfo;
+  const isDisabled = !name || !price || tags.length === 0 || submited;
 
   const navigate = useNavigate();
 
@@ -47,7 +49,8 @@ function NewAdvertPage() {
 
   function handleTagsChange(event: ChangeEvent<HTMLInputElement>) {
     if (tags.includes(event.target.value)) {
-      setTags(tags.filter((tag) => tag != event.target.value));
+      const removeTag = tags.filter((tag) => tag != event.target.value);
+      setTags(removeTag);
     } else {
       setTags([...tags, event.target.value]);
     }
@@ -55,6 +58,7 @@ function NewAdvertPage() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSubmited(true);
     const preAdvert: PreAdvert = {
       name: advertInfo.name,
       sale: (advertInfo.sale === "sell").toString(),
@@ -80,19 +84,22 @@ function NewAdvertPage() {
     <Page title="">
       <div>
         <form onSubmit={handleSubmit}>
+          <small>Fileds marqued with (*) are mandatory</small>
           <FormField
             type="text"
             name="name"
-            label="Title"
+            label="Title*"
             value={name}
             onChange={handleChange}
+            required
           />
           <FormField
             type="number"
             name="price"
-            label="Price"
+            label="Price*"
             value={price}
             onChange={handleChange}
+            required
           />
           <RadioSelection
             options={["sell", "buy"]}
@@ -100,12 +107,15 @@ function NewAdvertPage() {
             selectedValue={advertInfo.sale}
             onChange={handleChange}
           />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleChange}
-            name="photo"
-          />
+          <label>
+            Photo
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleChange}
+              name="photo"
+            />
+          </label>
           <CheckBoxSelection
             options={availableTags}
             name="tags"
@@ -113,8 +123,12 @@ function NewAdvertPage() {
             onChange={handleTagsChange}
           />
           <div>
-            <span></span>
-            <Button type="submit" $variant="primary">
+            <Button
+              id="submitButton"
+              type="submit"
+              $variant="primary"
+              disabled={isDisabled}
+            >
               Publish advert
             </Button>
           </div>
@@ -126,5 +140,4 @@ function NewAdvertPage() {
 
 export default NewAdvertPage;
 
-//TODO: Enable and disable button once all mandatory fields are fullfiled. (class 5, 1:35:00) and once is clicked (to assure if bad conexion)
-//TODO: handle erquired fields (all but picture)
+//TODO: loading state?
