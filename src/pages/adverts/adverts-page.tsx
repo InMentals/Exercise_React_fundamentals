@@ -20,6 +20,8 @@ function AdvertsPage() {
       setFilteredAdverts(adverts);
     }
     getAdverts();
+    document.getElementById("publishNewAdvert")!.style.display = "inline-flex";
+    document.getElementById("showAdverts")!.style.display = "none";
   }, []);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {

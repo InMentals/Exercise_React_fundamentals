@@ -24,6 +24,7 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   transition: background-color 0.3s;
   opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
+  box-shadow: 0 4px 8px var(--shadows-color);
 
   &:hover {
     background-color: ${(props) =>

@@ -13,6 +13,8 @@ const LinkButton = styled(Link)<{ $variant: "primary" | "secondary" }>`
   border-width: 1px;
   border-color: ${accentColor};
   display: inline-flex;
+  text-align: center;
+  text-wrap: nowrap;
   align-items: center;
   font: inherit;
   font-weight: bold;
@@ -23,6 +25,7 @@ const LinkButton = styled(Link)<{ $variant: "primary" | "secondary" }>`
   padding: 0 30px;
   text-decoration: none;
   transition: background-color 0.3s;
+  box-shadow: 0 4px 8px var(--shadows-color);
 
   &:hover {
     background-color: ${(props) =>

@@ -26,6 +26,8 @@ function NewAdvertPage() {
       setAvailableTags(getAvailableTags);
     }
     loadTags();
+    document.getElementById("publishNewAdvert")!.style.display = "none";
+    document.getElementById("showAdverts")!.style.display = "inline-flex";
   }, []);
 
   const { name, price } = advertInfo;

@@ -5,6 +5,7 @@ import { useAuth } from "./context";
 import FormField from "../../components/ui/form-field";
 import { useNavigate, useLocation } from "react-router";
 import { AxiosError } from "axios";
+import Header from "../../components/layout/header";
 
 function LoginPage() {
   const location = useLocation();
@@ -55,6 +56,7 @@ function LoginPage() {
 
   return (
     <div>
+      <Header displayNav={false} />
       <h1>Log in to WallaReact</h1>
       <form onSubmit={handleSubmit}>
         <FormField
