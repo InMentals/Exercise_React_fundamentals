@@ -56,7 +56,7 @@ function LoginPage() {
 
   return (
     <div>
-      <Header displayNav={false} />
+      <Header page="login" />
       <main className="main">
         <form className="loginForm" onSubmit={handleSubmit}>
           <FormField

@@ -5,30 +5,35 @@ import { Link } from "react-router";
 import LinkButton from "../ui/link-button";
 
 interface HeaderProps {
-  displayNav: boolean;
+  page: string;
 }
 
-function Header({ displayNav }: HeaderProps) {
+function Header({ page }: HeaderProps) {
   return (
     <header className="header">
       <Link className="logo" to="/">
         <img src={logo} alt="" className="logoImg" />
         <h1>WallaReact</h1>
       </Link>
-      <nav className="nav" style={{ display: displayNav ? "flex" : "none" }}>
-        <LinkButton id="publishNewAdvert" $variant="primary" to="/adverts/new">
-          Publish new advert
-        </LinkButton>
-        <LinkButton
-          id="showAdverts"
-          $variant="primary"
-          to="/adverts"
-          style={{ display: "none" }}
-        >
-          Show adverts
-        </LinkButton>
-        <AuthButton />
-      </nav>
+      {page != "login" && (
+        <nav className="nav">
+          {page === "adverts" && (
+            <LinkButton $variant="primary" to="/adverts/new">
+              Publish new advert
+            </LinkButton>
+          )}
+          {(page === "newAdvert" || page === "advert") && (
+            <LinkButton
+              $variant="primary"
+              to="/adverts"
+              style={{ display: "none" }}
+            >
+              Show adverts
+            </LinkButton>
+          )}
+          <AuthButton />
+        </nav>
+      )}
     </header>
   );
 }
