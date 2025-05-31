@@ -5,8 +5,8 @@ import { useAuth } from "./context";
 import FormField from "../../components/ui/form-field";
 import { useNavigate, useLocation } from "react-router";
 import { AxiosError } from "axios";
-import Header from "../../components/layout/header";
 import "./login-page.css";
+import Page from "../../components/layout/page";
 
 function LoginPage() {
   const location = useLocation();
@@ -55,58 +55,55 @@ function LoginPage() {
   }
 
   return (
-    <div>
-      <Header page="login" />
-      <main className="main">
-        <form className="loginForm" onSubmit={handleSubmit}>
-          <FormField
-            className="loginFormField"
-            type="email"
-            name="email"
-            label="Email"
-            value={email}
-            placeholder="enter your email"
-            onChange={handleChange}
+    <Page page="login">
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <FormField
+          className="loginFormField"
+          type="email"
+          name="email"
+          label="Email"
+          value={email}
+          placeholder="enter your email"
+          onChange={handleChange}
+        />
+        <FormField
+          className="loginFormField"
+          type="password"
+          name="password"
+          label="Password"
+          value={password}
+          placeholder="enter your password"
+          onChange={handleChange}
+        />
+        <div>
+          <input
+            type="checkbox"
+            id="rememberMe"
+            name="rememberMe"
+            checked={rememberMe}
+            onChange={handleRememberMe}
           />
-          <FormField
-            className="loginFormField"
-            type="password"
-            name="password"
-            label="Password"
-            value={password}
-            placeholder="enter your password"
-            onChange={handleChange}
-          />
-          <div>
-            <input
-              type="checkbox"
-              id="rememberMe"
-              name="rememberMe"
-              checked={rememberMe}
-              onChange={handleRememberMe}
-            />
-            <label htmlFor="rememberMe">Remember me</label>
+          <label htmlFor="rememberMe">Remember me</label>
+        </div>
+        <div className="submitContainer">
+          <Button type="submit" $variant="primary" disabled={isDisabled}>
+            Log in
+          </Button>
+        </div>
+        {error && (
+          <div
+            className="loginError"
+            role="alert"
+            onClick={() => {
+              setError(null);
+              setCredentials({ email: "", password: "" });
+            }}
+          >
+            {error.message}
           </div>
-          <div className="submitContainer">
-            <Button type="submit" $variant="primary" disabled={isDisabled}>
-              Log in
-            </Button>
-          </div>
-          {error && (
-            <div
-              className="loginError"
-              role="alert"
-              onClick={() => {
-                setError(null);
-                setCredentials({ email: "", password: "" });
-              }}
-            >
-              {error.message}
-            </div>
-          )}
-        </form>
-      </main>
-    </div>
+        )}
+      </form>
+    </Page>
   );
 }
 

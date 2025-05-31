@@ -43,7 +43,7 @@ function AdvertPage() {
   }
 
   return (
-    <Page title="Advert detail">
+    <Page page="advert">
       Advert detail {params.advertId} - {advert?.name}
       <img src={advert?.photo} alt={advert?.name} />
       <Button $variant="primary" onClick={showDialog}>

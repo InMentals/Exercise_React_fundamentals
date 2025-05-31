@@ -1,16 +1,18 @@
 import type { ReactNode } from "react";
+import Header from "./header";
+import "./page.css";
 
 interface PageProps {
-  title: string;
+  page: string;
   children: ReactNode;
 }
 
-function Page({ title, children }: PageProps) {
+function Page({ page, children }: PageProps) {
   return (
-    <div>
-      <h2>{title}</h2>
-      {children}
-    </div>
+    <>
+      <Header page={page} />
+      <main className="main">{children}</main>
+    </>
   );
 }
 

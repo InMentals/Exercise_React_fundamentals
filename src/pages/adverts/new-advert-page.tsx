@@ -26,8 +26,6 @@ function NewAdvertPage() {
       setAvailableTags(getAvailableTags);
     }
     loadTags();
-    document.getElementById("publishNewAdvert")!.style.display = "none";
-    document.getElementById("showAdverts")!.style.display = "inline-flex";
   }, []);
 
   const { name, price } = advertInfo;
@@ -83,7 +81,7 @@ function NewAdvertPage() {
   }
 
   return (
-    <Page title="">
+    <Page page="new">
       <div>
         <form onSubmit={handleSubmit}>
           <small>Fileds marqued with (*) are mandatory</small>

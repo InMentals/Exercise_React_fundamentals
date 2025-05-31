@@ -4,6 +4,7 @@ import type { Advert } from "./types";
 import AdvertItem from "./advert-item";
 import { Link } from "react-router";
 import FilterForm from "./filter-form";
+import Page from "../../components/layout/page";
 
 //TODO: handle connection error?
 //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
@@ -20,8 +21,6 @@ function AdvertsPage() {
       setFilteredAdverts(adverts);
     }
     getAdverts();
-    document.getElementById("publishNewAdvert")!.style.display = "inline-flex";
-    document.getElementById("showAdverts")!.style.display = "none";
   }, []);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -49,29 +48,30 @@ function AdvertsPage() {
   }
 
   return (
-    <div>
-      <h1>Adverts Page</h1>
-      <FilterForm
-        name={filter.name}
-        selectedSaleValue={filter.sale}
-        onSubmit={handleSubmit}
-        onReset={handleReset}
-        onFilterChange={handleChange}
-      />
-      {adverts.length ? (
-        <ul>
-          {filteredAdverts.map((advert) => (
-            <li key={advert.id}>
-              <Link to={`/adverts/${advert.id}`}>
-                <AdvertItem advert={advert} />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <Link to="/adverts/new">Publish new advert</Link>
-      )}
-    </div>
+    <Page page="adverts">
+      <div>
+        <FilterForm
+          name={filter.name}
+          selectedSaleValue={filter.sale}
+          onSubmit={handleSubmit}
+          onReset={handleReset}
+          onFilterChange={handleChange}
+        />
+        {adverts.length ? (
+          <ul>
+            {filteredAdverts.map((advert) => (
+              <li key={advert.id}>
+                <Link to={`/adverts/${advert.id}`}>
+                  <AdvertItem advert={advert} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Link to="/adverts/new">Publish new advert</Link>
+        )}
+      </div>
+    </Page>
   );
 }
 

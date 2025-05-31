@@ -22,12 +22,8 @@ function Header({ page }: HeaderProps) {
               Publish new advert
             </LinkButton>
           )}
-          {(page === "newAdvert" || page === "advert") && (
-            <LinkButton
-              $variant="primary"
-              to="/adverts"
-              style={{ display: "none" }}
-            >
+          {(page === "new" || page === "advert") && (
+            <LinkButton $variant="primary" to="/adverts">
               Show adverts
             </LinkButton>
           )}
@@ -39,5 +35,3 @@ function Header({ page }: HeaderProps) {
 }
 
 export default Header;
-
-//TODO: review full arquitecture: maybe is better to forget about <Layout> and just configure the header to show diferent buttons with the display attribute. or maybe like the error shown in login page
