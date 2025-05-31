@@ -5,6 +5,8 @@ import AdvertItem from "./advert-item";
 import { Link } from "react-router";
 import FilterForm from "./filter-form";
 import Page from "../../components/layout/page";
+import "./adverts-page.css";
+import LinkButton from "../../components/ui/link-button";
 
 //TODO: handle connection error?
 //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
@@ -58,17 +60,19 @@ function AdvertsPage() {
           onFilterChange={handleChange}
         />
         {adverts.length ? (
-          <ul>
+          <ul className="adverts-ontainer">
             {filteredAdverts.map((advert) => (
               <li key={advert.id}>
-                <Link to={`/adverts/${advert.id}`}>
+                <Link to={`/adverts/${advert.id}`} className="advert-container">
                   <AdvertItem advert={advert} />
                 </Link>
               </li>
             ))}
           </ul>
         ) : (
-          <Link to="/adverts/new">Publish new advert</Link>
+          <LinkButton $variant="primary" to="/adverts/new">
+            Publish new advert
+          </LinkButton>
         )}
       </div>
     </Page>

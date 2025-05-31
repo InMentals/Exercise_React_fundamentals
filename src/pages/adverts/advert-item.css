@@ -1,0 +1,50 @@
+.advert {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--product-bg-color);
+  justify-content: top;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadows-color);
+  padding: 15px;
+  transition: transform 0.2s ease;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+.advert:hover {
+  transform: scale(1.02);
+}
+
+.advert h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 20px;
+}
+
+.advert .sell {
+  font-weight: bold;
+  color: var(--sell-color);
+}
+
+.advert .buy {
+  font-weight: bold;
+  color: var(--buy-color);
+}
+
+.tags-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 0 0;
+}
+
+.tag {
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  font-size: 12px;
+  background-color: var(--main-brand-color-light);
+}

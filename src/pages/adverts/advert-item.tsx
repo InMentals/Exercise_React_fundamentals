@@ -1,4 +1,5 @@
 import type { Advert } from "./types";
+import "./advert-item.css";
 
 interface AdvertItemProps {
   advert: Advert;
@@ -7,19 +8,18 @@ const AdvertItem = ({ advert }: AdvertItemProps) => {
   const { name, sale, price, tags } = advert;
 
   return (
-    <article>
+    <article className="advert">
       <h2>{name}</h2>
-      <strong>{sale ? "Sell" : "Buy"}</strong>
+      <strong className={sale ? "sell" : "buy"}>{sale ? "Sell" : "Buy"}</strong>
       <data value={price}>
         {new Intl.NumberFormat("es-ES", {
           style: "currency",
           currency: "EUR",
         }).format(price)}
       </data>
-      <img src="foto.jpg" alt={name} />
-      <ul aria-label="Tags">
+      <ul aria-label="Tags" className="tags-container">
         {tags.map((tag) => (
-          <li>{tag}</li>
+          <li className="tag">{tag}</li>
         ))}
       </ul>
     </article>

@@ -1,0 +1,15 @@
+.adverts-ontainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+  gap: 20px;
+  padding: 10px;
+  justify-content: center;
+  & li {
+    list-style-type: none;
+  }
+}
+
+.advert-container {
+  text-decoration: none;
+  color: var(--main-text-color);
+}
