@@ -35,4 +35,4 @@ function Header({ displayNav }: HeaderProps) {
 
 export default Header;
 
-//TODO: review full arquitecture: maybe is better to forget about <Layout> and just configure the header to show diferent buttons with the display attribute
+//TODO: review full arquitecture: maybe is better to forget about <Layout> and just configure the header to show diferent buttons with the display attribute. or maybe like the error shown in login page

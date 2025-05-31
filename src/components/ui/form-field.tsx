@@ -8,7 +8,7 @@ const FormField = ({ label, ...props }: FormFieldProps) => {
   return (
     <div>
       <label>
-        <span>{label}</span>
+        {label}
         <input {...props} />
       </label>
     </div>

@@ -6,6 +6,7 @@ import FormField from "../../components/ui/form-field";
 import { useNavigate, useLocation } from "react-router";
 import { AxiosError } from "axios";
 import Header from "../../components/layout/header";
+import "./login-page.css";
 
 function LoginPage() {
   const location = useLocation();
@@ -42,7 +43,6 @@ function LoginPage() {
       const to = location.state?.from ?? "/";
       navigate(to, { replace: true });
     } catch (error) {
-      console.log(error);
       if (error instanceof AxiosError) {
         setError({
           message: error.response?.data?.message ?? error.message ?? "",
@@ -57,46 +57,55 @@ function LoginPage() {
   return (
     <div>
       <Header displayNav={false} />
-      <h1>Log in to WallaReact</h1>
-      <form onSubmit={handleSubmit}>
-        <FormField
-          type="text"
-          name="email"
-          label="Email"
-          value={email}
-          onChange={handleChange}
-        />
-        <FormField
-          type="password"
-          name="password"
-          label="Password"
-          value={password}
-          onChange={handleChange}
-        />
-        <div>
-          <input
-            type="checkbox"
-            id="rememberMe"
-            name="rememberMe"
-            checked={rememberMe}
-            onChange={handleRememberMe}
+      <main className="main">
+        <form className="loginForm" onSubmit={handleSubmit}>
+          <FormField
+            className="loginFormField"
+            type="email"
+            name="email"
+            label="Email"
+            value={email}
+            placeholder="enter your email"
+            onChange={handleChange}
           />
-          <label htmlFor="rememberMe">Remember me</label>
-        </div>
-        <Button type="submit" $variant="primary" disabled={isDisabled}>
-          Log in
-        </Button>
-      </form>
-      {error && (
-        <div
-          role="alert"
-          onClick={() => {
-            setError(null);
-          }}
-        >
-          {error.message}
-        </div>
-      )}
+          <FormField
+            className="loginFormField"
+            type="password"
+            name="password"
+            label="Password"
+            value={password}
+            placeholder="enter your password"
+            onChange={handleChange}
+          />
+          <div>
+            <input
+              type="checkbox"
+              id="rememberMe"
+              name="rememberMe"
+              checked={rememberMe}
+              onChange={handleRememberMe}
+            />
+            <label htmlFor="rememberMe">Remember me</label>
+          </div>
+          <div className="submitContainer">
+            <Button type="submit" $variant="primary" disabled={isDisabled}>
+              Log in
+            </Button>
+          </div>
+          {error && (
+            <div
+              className="loginError"
+              role="alert"
+              onClick={() => {
+                setError(null);
+                setCredentials({ email: "", password: "" });
+              }}
+            >
+              {error.message}
+            </div>
+          )}
+        </form>
+      </main>
     </div>
   );
 }
