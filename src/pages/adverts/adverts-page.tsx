@@ -27,7 +27,9 @@ function AdvertsPage() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    let applyFilter = adverts.filter((ad) => ad.name.includes(filter.name));
+    let applyFilter = adverts.filter((ad) =>
+      ad.name.toLocaleLowerCase().includes(filter.name.toLocaleLowerCase()),
+    );
     if (filter.sale === "sell")
       applyFilter = applyFilter.filter((ad) => ad.sale);
     if (filter.sale === "buy")
@@ -59,6 +61,7 @@ function AdvertsPage() {
           onReset={handleReset}
           onFilterChange={handleChange}
         />
+
         {adverts.length ? (
           <ul className="adverts-ontainer">
             {filteredAdverts.map((advert) => (

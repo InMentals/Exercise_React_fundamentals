@@ -1,0 +1,59 @@
+.filter-form-container {
+  position: sticky;
+  top: 96px;
+  z-index: 99;
+  background-color: var(--product-bg-color);
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  display: flex;
+}
+
+.filter-form-container form {
+  display: flex;
+  gap: 1rem;
+
+  justify-content: center;
+}
+
+.filter-form-container fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filter-form-container legend {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.filter-form-container button {
+  margin: 0.5rem;
+}
+.filter-form-container input[type="text"] {
+  margin: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  background-color: var(--input-bg-color);
+  padding: 0.3rem;
+}
+
+.filter-form-container button {
+  background-color: var(--main-brand-color);
+  border: solid 1 px var(--main-brand-color-light);
+  transition: background-color 0.3s;
+  border-radius: 999px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px var(--shadows-color);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--main-brand-color-light);
+  }
+}

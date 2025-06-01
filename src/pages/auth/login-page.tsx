@@ -56,53 +56,55 @@ function LoginPage() {
 
   return (
     <Page page="login">
-      <form className="loginForm" onSubmit={handleSubmit}>
-        <FormField
-          className="loginFormField"
-          type="email"
-          name="email"
-          label="Email"
-          value={email}
-          placeholder="enter your email"
-          onChange={handleChange}
-        />
-        <FormField
-          className="loginFormField"
-          type="password"
-          name="password"
-          label="Password"
-          value={password}
-          placeholder="enter your password"
-          onChange={handleChange}
-        />
-        <div>
-          <input
-            type="checkbox"
-            id="rememberMe"
-            name="rememberMe"
-            checked={rememberMe}
-            onChange={handleRememberMe}
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <FormField
+            className="loginFormField"
+            type="email"
+            name="email"
+            label="Email"
+            value={email}
+            placeholder="enter your email"
+            onChange={handleChange}
           />
-          <label htmlFor="rememberMe">Remember me</label>
-        </div>
-        <div className="submitContainer">
-          <Button type="submit" $variant="primary" disabled={isDisabled}>
-            Log in
-          </Button>
-        </div>
-        {error && (
-          <div
-            className="loginError"
-            role="alert"
-            onClick={() => {
-              setError(null);
-              setCredentials({ email: "", password: "" });
-            }}
-          >
-            {error.message}
+          <FormField
+            className="loginFormField"
+            type="password"
+            name="password"
+            label="Password"
+            value={password}
+            placeholder="enter your password"
+            onChange={handleChange}
+          />
+          <div>
+            <input
+              type="checkbox"
+              id="rememberMe"
+              name="rememberMe"
+              checked={rememberMe}
+              onChange={handleRememberMe}
+            />
+            <label htmlFor="rememberMe">Remember me</label>
           </div>
-        )}
-      </form>
+          <div className="submit-container">
+            <Button type="submit" $variant="primary" disabled={isDisabled}>
+              Log in
+            </Button>
+          </div>
+          {error && (
+            <div
+              className="login-error"
+              role="alert"
+              onClick={() => {
+                setError(null);
+                setCredentials({ email: "", password: "" });
+              }}
+            >
+              {error.message}
+            </div>
+          )}
+        </form>
+      </div>
     </Page>
   );
 }

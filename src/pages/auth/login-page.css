@@ -1,11 +1,20 @@
-.loginForm label {
+.login-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  margin: 20px;
+}
+
+.login-form .login-form label {
   font-weight: bold;
   color: var(--main-text-color);
   margin-bottom: 0.5rem;
 }
 
-.loginForm input[type="email"],
-.loginForm input[type="password"] {
+.login-form input[type="email"],
+.login-form input[type="password"] {
   padding: 0.8rem;
   border: 1px solid var(--border-color);
   border-radius: 9999px;
@@ -15,13 +24,13 @@
   box-sizing: border-box;
 }
 
-.loginForm .submitContainer {
+.login-form .submit-container {
   margin: 10px;
   display: flex;
   justify-content: center;
 }
 
-.loginError {
+.login-error {
   margin: 5px;
   text-align: center;
   border: solid 1px;
