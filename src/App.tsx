@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from "react-router";
 
 import RequireAuth from "./pages/auth/require-auth";
 import AdvertPage from "./pages/adverts/advert-page";
+import NotFound from "./pages/not-found/not-found";
 
 function App() {
   return (
@@ -16,8 +17,7 @@ function App() {
         <Route path="new" element={<NewAdvertPage />} />
       </Route>
       <Route path="/" element={<Navigate to="/adverts" />} />
-      <Route path="/not-found" element={<div>404 | Not found</div>} />
-      <Route path="*" element={<Navigate to="/not-found" />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
