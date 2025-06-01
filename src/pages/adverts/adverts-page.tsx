@@ -63,7 +63,7 @@ function AdvertsPage() {
         />
 
         {adverts.length ? (
-          <ul className="adverts-ontainer">
+          <ul className="adverts-container">
             {filteredAdverts.map((advert) => (
               <li key={advert.id}>
                 <Link to={`/adverts/${advert.id}`} className="advert-container">
@@ -73,9 +73,14 @@ function AdvertsPage() {
             ))}
           </ul>
         ) : (
-          <LinkButton $variant="primary" to="/adverts/new">
-            Publish new advert
-          </LinkButton>
+          <div className="no-adverts-container">
+            <h2>There are no adverts published</h2>
+            <div className="no-adverts-button-container">
+              <LinkButton $variant="primary" to="/adverts/new">
+                Publish new advert
+              </LinkButton>
+            </div>
+          </div>
         )}
       </div>
     </Page>

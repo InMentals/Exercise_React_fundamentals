@@ -3,8 +3,6 @@ import { useAuth } from "./context";
 import { logout } from "./service";
 import { Link } from "react-router";
 
-//TODO: review auth-button. Its really primary and secondary necessary? Then, when do we need to render each?
-
 function AuthButton() {
   const { isLogged, onLogout } = useAuth();
   const handleLogoutClick = async () => {

@@ -1,4 +1,4 @@
-.adverts-ontainer {
+.adverts-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   gap: 20px;
@@ -12,4 +12,20 @@
 .advert-container {
   text-decoration: none;
   color: var(--main-text-color);
+}
+
+.no-adverts-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.no-adverts-button-container {
+  display: flex;
+  justify-content: center;
 }

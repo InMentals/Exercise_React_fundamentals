@@ -65,5 +65,3 @@ function AdvertPage() {
 }
 
 export default AdvertPage;
-
-//TODO: show all the details
