@@ -8,6 +8,7 @@ import { AxiosError } from "axios";
 import type { PreAdvert } from "./types";
 import RadioSelection from "../../components/ui/radio-selection";
 import CheckBoxSelection from "../../components/ui/checkbox-selection";
+import "./new-advert-page.css";
 
 function NewAdvertPage() {
   const [advertInfo, setAdvertInfo] = useState({
@@ -82,8 +83,8 @@ function NewAdvertPage() {
 
   return (
     <Page page="new">
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className="new-advert-form-container">
+        <form onSubmit={handleSubmit} className="new-advert-form">
           <small>Fileds marqued with (*) are mandatory</small>
           <FormField
             type="text"
@@ -122,7 +123,7 @@ function NewAdvertPage() {
             selectedValue={tags}
             onChange={handleTagsChange}
           />
-          <div>
+          <div className="submit-container">
             <Button
               id="submitButton"
               type="submit"

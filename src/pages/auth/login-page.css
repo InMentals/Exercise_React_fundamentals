@@ -7,7 +7,7 @@
   margin: 20px;
 }
 
-.login-form .login-form label {
+.login-form label {
   font-weight: bold;
   color: var(--main-text-color);
   margin-bottom: 0.5rem;

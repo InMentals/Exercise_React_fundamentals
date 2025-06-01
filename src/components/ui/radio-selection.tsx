@@ -13,7 +13,7 @@ const RadioSelection = ({
   ...props
 }: RadioSelectionProps) => {
   return (
-    <fieldset>
+    <fieldset className={name}>
       {options.map((option) => (
         <div key={option}>
           <input

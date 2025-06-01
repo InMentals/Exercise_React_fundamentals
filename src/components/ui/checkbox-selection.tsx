@@ -13,7 +13,7 @@ const CheckBoxSelection = ({
   ...props
 }: CheckBoxSelectionProps) => {
   return (
-    <fieldset>
+    <fieldset className={name}>
       <legend>{`${name.charAt(0).toUpperCase() + name.slice(1)}*`}</legend>
       {options.map((option) => (
         <div key={option}>
