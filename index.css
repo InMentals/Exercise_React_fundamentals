@@ -1,12 +1,12 @@
 :root {
   --bg-color: #f8f9fa;
+  --dialog-bg-color: rgba(248, 249, 250, 0.9);
   --main-text-color: black;
-  --product-bg-color: white;
+  --advert-bg-color: white;
   --main-brand-color: #ddce2e;
   --main-brand-color-light: #ddce2e7a;
   --border-color: #ddd;
   --shadows-color: rgba(0, 0, 0, 0.05);
-  --product-text-color: #555;
   --buy-color: #3540dc;
   --sell-color: #28a745;
   font-size: 16px;

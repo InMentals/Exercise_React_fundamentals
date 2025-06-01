@@ -54,27 +54,12 @@ function AdvertPage() {
           Delete advert
         </Button>
       </div>
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          display: displayDialog,
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: 10,
-          backgroundColor: "rgba(255, 255, 255, 0.9)",
-          backdropFilter: "blur(2px)",
-        }}
-      >
-        <Dialog
-          text="Are you sure?"
-          onSubmit={handleDelete}
-          onCancel={handleCancel}
-        />
-      </div>
+      <Dialog
+        display={displayDialog}
+        text="Are you sure?"
+        onSubmit={handleDelete}
+        onCancel={handleCancel}
+      />
     </Page>
   );
 }

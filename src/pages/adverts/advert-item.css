@@ -1,7 +1,7 @@
 .advert {
   display: flex;
   flex-direction: column;
-  background-color: var(--product-bg-color);
+  background-color: var(--advert-bg-color);
   justify-content: top;
   border: 2px solid var(--border-color);
   border-radius: 10px;

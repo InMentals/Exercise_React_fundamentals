@@ -29,7 +29,7 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   &:hover {
     background-color: ${(props) =>
       props.$variant === "primary"
-        ? "var(--main-brand-color)"
+        ? "var(--main-brand-color-light)"
         : "var(--main-brand-color-light)"};
   }
 `;
