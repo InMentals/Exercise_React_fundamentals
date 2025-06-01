@@ -3,12 +3,15 @@ import "./advert-item.css";
 
 interface AdvertItemProps {
   advert: Advert;
+  detail: boolean;
 }
-const AdvertItem = ({ advert }: AdvertItemProps) => {
-  const { name, sale, price, tags } = advert;
-
+const AdvertItem = ({ advert, detail }: AdvertItemProps) => {
+  const { name, sale, price, tags, photo, createdAt } = advert;
+  let hover = "";
+  if (!detail) hover = "hover";
+  const advertClass = `advert ${hover}`;
   return (
-    <article className="advert">
+    <article className={advertClass}>
       <h2>{name}</h2>
       <strong className={sale ? "sell" : "buy"}>{sale ? "Sell" : "Buy"}</strong>
       <data value={price}>
@@ -17,11 +20,19 @@ const AdvertItem = ({ advert }: AdvertItemProps) => {
           currency: "EUR",
         }).format(price)}
       </data>
+      {detail && (
+        <div className="photo-container">
+          <img src={photo} alt={name} className="photo" />
+        </div>
+      )}
       <ul aria-label="Tags" className="tags-container">
         {tags.map((tag) => (
           <li className="tag">{tag}</li>
         ))}
       </ul>
+      {detail && (
+        <p className="created-at">Created at: {createdAt.substring(0, 10)}</p>
+      )}
     </article>
   );
 };

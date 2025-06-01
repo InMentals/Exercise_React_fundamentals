@@ -67,7 +67,7 @@ function AdvertsPage() {
             {filteredAdverts.map((advert) => (
               <li key={advert.id}>
                 <Link to={`/adverts/${advert.id}`} className="advert-container">
-                  <AdvertItem advert={advert} />
+                  <AdvertItem advert={advert} detail={false} />
                 </Link>
               </li>
             ))}

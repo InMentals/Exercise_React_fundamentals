@@ -6,6 +6,8 @@ import { deleteAdvert, getAdvert } from "./service";
 import { AxiosError } from "axios";
 import Button from "../../components/ui/button";
 import Dialog from "../../components/ui/dialog";
+import AdvertItem from "./advert-item";
+import "./advert-page.css";
 //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
 
 function AdvertPage() {
@@ -44,11 +46,14 @@ function AdvertPage() {
 
   return (
     <Page page="advert">
-      Advert detail {params.advertId} - {advert?.name}
-      <img src={advert?.photo} alt={advert?.name} />
-      <Button $variant="primary" onClick={showDialog}>
-        Delete advert{" "}
-      </Button>
+      <div className="item-detail-container">
+        {advert && <AdvertItem advert={advert} detail={true} />}
+      </div>
+      <div className="delete-button-container">
+        <Button $variant="primary" onClick={showDialog}>
+          Delete advert
+        </Button>
+      </div>
       <div
         style={{
           position: "fixed",
@@ -60,7 +65,7 @@ function AdvertPage() {
           justifyContent: "center",
           alignItems: "center",
           zIndex: 10,
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
           backdropFilter: "blur(2px)",
         }}
       >

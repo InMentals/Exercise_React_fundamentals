@@ -4,7 +4,7 @@ export interface Advert {
   price: number;
   tags: string[];
   userId: string;
-  updatedAt: string;
+  createdAt: string;
   id: string;
   photo: string;
 }
