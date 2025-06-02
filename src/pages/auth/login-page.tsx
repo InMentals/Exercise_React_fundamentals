@@ -47,7 +47,7 @@ function LoginPage() {
         setError({
           message: error.response?.data?.message ?? error.message ?? "",
         });
-        //TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
+        navigate("not-found");
       }
     } finally {
       setIsFetching(false);

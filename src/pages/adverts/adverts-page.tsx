@@ -8,9 +8,6 @@ import Page from "../../components/layout/page";
 import "./adverts-page.css";
 import LinkButton from "../../components/ui/link-button";
 
-//TODO: handle connection error?
-//TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
-
 function AdvertsPage() {
   const [adverts, setAdverts] = useState<Advert[]>([]);
   const [filter, setFilter] = useState({ name: "", sale: "all" });

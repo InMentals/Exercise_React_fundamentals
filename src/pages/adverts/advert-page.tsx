@@ -8,7 +8,6 @@ import Button from "../../components/ui/button";
 import Dialog from "../../components/ui/dialog";
 import AdvertItem from "./advert-item";
 import "./advert-page.css";
-//TODO: do we want to hanlde loadig state? (class 4, 3:42 min)
 
 function AdvertPage() {
   const params = useParams();

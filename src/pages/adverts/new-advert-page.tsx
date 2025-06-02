@@ -140,5 +140,3 @@ function NewAdvertPage() {
 }
 
 export default NewAdvertPage;
-
-//TODO: loading state?
